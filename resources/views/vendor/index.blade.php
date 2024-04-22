@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -11,6 +12,14 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
+<style>
+    .card {
+        width: 120%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+</style>
 <body>
     @include('welcome')
     <div class="container">
@@ -22,24 +31,6 @@
         <div class="alert alert-success mb-2">{{session('success')}}
         </div>
         @endif
-
-        <div class="row justify-content-between align-items-center mb-3">
-            <div class="col-md-auto">
-                <a href="#" class="text-white btn btn-dark mt-5" id="printModalBtn">Print</a>
-                <a href="{{ route('vendor.create') }}" id="ch" class="text-white btn btn-primary mt-5 "> Vendor Create</a> </div>
-            <div class="col-md-auto">
-
-                <form action="{{ route('vendor.index') }}" method="GET" class="form-inline">
-                    <div class="input-group">
-                        <input type="text" class="form-control  mt-5" placeholder="Search..." name="search" value="{{ request('search') }}">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-primary mt-5 " type="submit">Search</button>
-                        </div>
-                        <a href="{{ route('vendor.index') }}" class="btn btn-danger ml-2  mt-5"><i class="fa fa-refresh" style="font-size:12px"></i></a>
-                    </div>
-                </form>
-            </div>
-        </div>
 
         <div class="modal fade" id="printModal" tabindex="-1" aria-labelledby="printModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
@@ -85,8 +76,24 @@
         <div class="card">
             <div class="card-header">Vendor List</div>
             <div class="card-body">
+                <div class="row justify-content-between align-items-center mb-3">
+                    <div class="col-md-auto">
+                        <a href="#" class="text-white btn btn-dark" id="printModalBtn">Print</a>
+                        <a href="{{ route('vendor.create') }}" id="ch" class="text-white btn btn-primary"> Vendor Create</a> </div>
+                    <div class="col-md-auto">
+
+                        <form action="{{ route('vendor.index') }}" method="GET" class="form-inline">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="searchInput" placeholder="Search..." name="search" value="{{ request('search') }}">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-primary " type="submit">Search</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 <table class="table table-striped table-hover table-bordered">
-                    <thead class="thead-dark">
+                    <thead class>
                         <tr class="text-success">
                             <th>Vendor Name</th>
                             <th>Company Name</th>
@@ -108,15 +115,15 @@
                             <td>{{ $vendor->address }}</td>
                             <td>{{ $vendor->email }}</td>
                             <td>
-                                <button class="btn btn-info openModal" data-vendor="{{ $vendor->id }}">{{ $vendor->balance }}</button>
+                                <button class="btn btn-success openModal" data-vendor="{{ $vendor->id }}"  style="width:75%">{{ $vendor->balance }}</button>
                             </td>
                             <td>
-                                <a href="{{ route('vendor.edit', $vendor->id) }}" class="btn btn-dark">Update</a>
+                                <a href="{{ route('vendor.edit', $vendor->id) }}" class="btn btn-info"><i class="bi bi-pencil-square"></i></a>
 
                                 <form id="deleteForm{{ $vendor->id }}" action="{{ route('vendor.destroy', $vendor->id) }}" method="POST" style="display:inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="button" class="btn btn-danger deleteBtn" data-id="{{ $vendor->id }}">Delete</button>
+                                    <button type="button" class="btn btn-danger deleteBtn" data-id="{{ $vendor->id }}"><i class="bi bi-trash"></i></button>
                                 </form>
                             </td>
 
@@ -302,7 +309,32 @@
             });
         });
 
+
+        $(document).ready(function() {
+            $('#searchInput').on('input', function() {
+                var searchValue = $(this).val().trim();
+                if (searchValue !== '') {
+                    $.ajax({
+                        url: "{{ route('vendor.index') }}"
+                        , type: "GET"
+                        , data: {
+                            search: searchValue
+                        }
+                        , success: function(response) {
+                            $('.table tbody').html(response.table);
+                            $('.pagination').html(response.pagination);
+                        }
+                        , error: function(xhr, status, error) {
+                            console.error(error);
+                        }
+                    });
+                } else {
+                    location.href = "{{ route('vendor.index') }}";
+                }
+            });
+        });
+
     </script>
-    
+
 </body>
 </html>

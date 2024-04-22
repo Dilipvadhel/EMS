@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{{-- resources/views/role/edit.blade.php --}}
 <html lang="en">
 <head>
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
@@ -31,13 +32,13 @@
                                     Role Name
                                 </label>
                                 <div class="col-md-6">
-                                    <input type="text" name="name" id="name" class="form-control  @error('name') is-invalid @enderror"  value="{{ old('name', $role->name) }}">
+                                    <input type="text" name="name" id="name" class="form-control  @error('name') is-invalid @enderror" value="{{ old('name', $role->name) }}">
                                     @error('name')
                                     <strong class="invalid-feedback"> {{ $message }} </strong>
                                     @enderror
                                 </div>
                             </div>
-                             
+
                             <div class="form-group row mb-0">
                                 <div class="offset-md-4 col-md-6">
                                     <button type="submit" class="btn btn-primary">Update Role</button>

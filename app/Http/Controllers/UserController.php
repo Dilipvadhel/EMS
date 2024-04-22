@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class UserController extends Controller
 {
-
+ 
 
     // public function index()
     // {
@@ -67,7 +67,6 @@ class UserController extends Controller
     } else {
         $fields['profile_picture'] = $user->profile_picture;
     }
-
     $user->fill($fields)->save();
     $message = $user->wasRecentlyCreated ? 'User created successfully' : 'User updated successfully';
     return redirect()->route('user.index')->with('success', $message);

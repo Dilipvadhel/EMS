@@ -42,7 +42,7 @@
 
                         <div class="col-6">
                             <label for="role_id">Select Role</label>
-                            <select name="role_id" id="role_id" class="form-control  @error('role_id') is-invalid @enderror" value="{{ old('role_id') }}">
+                            <select name="role_id" id="role_id" class="form-control mb-3 @error('role_id') is-invalid @enderror" value="{{ old('role_id') }}">
                                 <option value="">Select Role</option>
                                 @foreach($roles as $role)
                                 <option value="{{ $role->id }}">{{ $role->name }}</option>

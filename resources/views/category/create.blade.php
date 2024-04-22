@@ -33,13 +33,14 @@
                         <textarea class="form-control" id="description" name="description"></textarea>
                     </div>
 
-                    <div class="card">
+                    <div class="cards">
                         <div class="card-body">
                             <div class="row" id="subcategories">
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="subnames[]">Subcategory Name</label>
                                         <button type="button" class="btn btn-success ml-2 mb-2  @error('subnames[]') is-invalid @enderror" onclick="addSubcategory()">Add Subcategory</button>
+                                        <br><br>
                                         <span id="subcategoryError" class="error"></span><br>
                                         @error('subnames.*')
                                         <div class="invalid-feedback">{{ $message }}</div>

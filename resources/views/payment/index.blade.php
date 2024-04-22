@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Payments List</title>
 </head>
+<style>
+    .card {
+        width: 120%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+</style>
 <body>
     @include('welcome')
 
@@ -19,23 +28,6 @@
         <div class="alert alert-danger mb-2">{{ session('deleted') }}</div>
         @endif
 
-        <div class="row justify-content-between align-items-center mb-3">
-            <div class="col-md-auto">
-                <a href="{{ route('payment.create') }}" class="text-white btn btn-primary mt-5">Payment</a>
-            </div>
-            <div class="col-md-auto">
-                <form action="{{ route('payment.index') }}" method="GET" class="form-inline">
-                    <div class="input-group">
-                        <input type="text" class="form-control mt-5" placeholder="Search..." name="search" value="{{ request('search') }}">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-primary mt-5" type="submit">Search</button>
-                        </div>
-                        <a href="{{ route('payment.index') }}" class="btn btn-danger ml-2 mt-5"><i class="fa fa-refresh" style="font-size:12px"></i></a>
-                    </div>
-                </form>
-            </div>
-        </div>
-
         <div class="card">
             <div class="card-header">Payments List</div>
             <div class="card-body">
@@ -44,8 +36,24 @@
                     No payments Record Found
                 </div>
                 @else
+                <div class="row justify-content-between align-items-center mb-3">
+                    <div class="col-md-auto">
+                        <a href="{{ route('payment.create') }}" class="text-white btn btn-primary">Payment</a>
+                    </div>
+                    <div class="col-md-auto">
+                        <form action="{{ route('payment.index') }}" method="GET" class="form-inline">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="searchInput" placeholder="Search..." name="search" value="{{ request('search') }}">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-primary " type="submit">Search</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
                 <table class="table table-striped table-hover table-bordered">
-                    <thead class="thead-dark">
+                    <thead class>
                         <tr class="text-success">
                             <th>Vendor</th>
                             <th>Date</th>
@@ -62,12 +70,12 @@
                             {{-- <td>{{ date('d-m-20y', strtotime($payment->date))}}</td> --}}
                             <td>{{ $payment->amount }}</td>
                             <td>
-                                <a href="{{ route('payment.edit', $payment->id) }}" class="btn btn btn-dark">Edit</a>
+                                <a href="{{ route('payment.edit', $payment->id) }}" class="btn btn btn-info"><i class="bi bi-pencil-square"></i></a>
 
                                 <form id="deleteForm{{ $payment->id }}" action="{{ route('payment.destroy', $payment->id) }}" method="POST" style="display:inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="button" class="btn btn-danger deleteBtn" data-id="{{ $payment->id }}">Delete</button>
+                                    <button type="button" class="btn btn-danger deleteBtn" data-id="{{ $payment->id }}"><i class="bi bi-trash"></i></button>
                                 </form>
                             </td>
                         </tr>
@@ -98,5 +106,33 @@
     </div>
     </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#searchInput').on('input', function() {
+                var searchValue = $(this).val().trim();
+                if (searchValue !== '') {
+                    $.ajax({
+                        url: "{{ route('payment.index') }}"
+                        , type: "GET"
+                        , data: {
+                            search: searchValue
+                        }
+                        , success: function(response) {
+                            $('.table tbody').html(response.table);
+                            $('.pagination').html(response.pagination);
+                        }
+                        , error: function(xhr, status, error) {
+                            console.error(error);
+                        }
+                    });
+                } else {
+                    location.href = "{{ route('payment.index') }}";
+                }
+            });
+        });
+
+    </script>
 </body>
 </html>

@@ -12,7 +12,7 @@
     <title>Update User Data</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>  
+<body>
     @include('welcome');
     <div class="container mt-5">
         <h2 class="mb-3">Edit User Registration</h2>
@@ -28,8 +28,9 @@
                         <img src="{{ asset('storage/' . $user->profile_picture) }}" alt="Profile Picture" style="max-width: 50px; max-height: 50px;">
                     </div>
                     @endif
-                    <input type="file" class="form-control mt-2 @error('profile_picture') is-invalid @enderror" id="profile_picture" name="profile_picture" value="{{ old('profile_picture', $user->profile_picture) }}">
+                    <input type="file" class="form-control mt-2 @error('profile_picture') is-invalid @enderror" id="profile_picture" name="profile_picture">
                 </div>
+
 
                 <div class="col-6">
                     <div class="form-group">
@@ -57,7 +58,7 @@
                         @enderror
                     </div>
                 </div>
-
+ 
                 <div class="col-6">
                     <div class="form-group">
                         <label for="lastname">Last Name</label>
@@ -94,9 +95,9 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary" id="updateBtn">update</button>
-            <a href="{{route('user.index')}}" class="text-white btn btn-danger">Back</a>
-        </form>
-    </div>
+          <button type="submit" class="btn btn-primary" id="updateBtn">update</button>
+       <a href="{{route('user.index')}}" class="text-white btn btn-danger">Back</a>
+    </form>
+  </div>
 </body>
 </html>

@@ -56,9 +56,9 @@
                 position: fixed;
                 left: 0;
                 width: 272px;
-                height: 103%;
+                height: 110%;
                 margin-left: -1px;
-                margin-top: -2.7%;
+                margin-top: -4.5%;
                 overflow-y: auto;
                 background: #393e46;
                 transition: all 0.5s ease;

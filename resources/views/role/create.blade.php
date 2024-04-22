@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+{{-- resources/views/role/create.blade.php --}}
 <head>
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -36,7 +37,7 @@
                                     @enderror
                                 </div>
                             </div>
-                             
+
                             <div class="form-group row mb-0">
                                 <div class="offset-md-4 col-md-6">
                                     <button type="submit" class="btn btn-primary">Create Role</button>
