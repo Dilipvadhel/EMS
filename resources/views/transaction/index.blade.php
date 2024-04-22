@@ -26,9 +26,9 @@
 <body>
     @include('welcome')
     @if($transactions->isEmpty())
-    <div class="alert alert-danger" role="alert">
+    {{-- <div class="alert alert-danger w-50 ml-5" role="alert">
         No Transaction Records Found
-    </div>
+    </div> --}}
     @else
     <div class="container">
         <div class="card">
