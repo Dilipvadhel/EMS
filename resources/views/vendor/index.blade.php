@@ -23,20 +23,12 @@
 <body>
     @include('welcome')
     <div class="container">
-        @if(session('del'))
-        <div class="alert alert-danger mb-2">{{ session('del') }}</div>
-        @endif
-
-        @if(session('success'))
-        <div class="alert alert-success mb-2">{{session('success')}}
-        </div>
-        @endif
 
         <div class="modal fade" id="printModal" tabindex="-1" aria-labelledby="printModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="printModalLabel">Vendor Pdf</h5>
+                        <h5 class="modal-title" id="printModalLabel">Vendor Transactions</h5>
                         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -66,8 +58,8 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-primary" id="printBtn">Print</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>

@@ -18,14 +18,6 @@
 <body>
     @include('welcome')
     <div class="container">
-        @if(session('success'))
-        <div class="alert alert-success mb-2">{{ session('success') }}</div>
-        @endif
-
-        @if(session('deleted'))
-        <div class="alert alert-danger mb-2">{{ session('deleted') }}</div>
-        @endif
-
         <div class="card">
             <div class="card-header">Registered Users</div>
             <div class="card-body">
@@ -81,7 +73,6 @@
                                     @method('DELETE')
                                     <button type="button" class="btn btn-danger deleteBtn" data-id="{{ $user->id }}"><i class="bi bi-trash"></i></button>
                                 </form>
-                                {{-- <button class="btn btn-warning viewBtn" data-toggle="modal" data-target="#userModal{{ $user->id }}" data-id="{{ $user->id }}">View</button> --}}
                             </td>
                         </tr>
                         @endforeach
@@ -106,6 +97,7 @@
                                     <li class="page-item {{ ($users->currentPage() == $i) ? 'active' : '' }}"><a class="page-link" href="{{ $users->url($i) }}">{{ $i }}</a></li>
                                     @endfor
 
+                                    {{-- isme jaise hi inpect kholta ho left side se to right side pura card chala kata hai wo right side  fix hona sahiye provide code  --}}
                                     @if ($users->hasMorePages())
                                     <li class="page-item"><a class="page-link" href="{{ $users->nextPageUrl() }}" rel="next">&raquo;</a></li>
                                     @else

@@ -10,7 +10,6 @@
             width: 120%;
             margin-left: auto;
             margin-right: auto;
-            margin-top: 20px;
         }
 
         @media (max-width: 576px) {
@@ -31,6 +30,7 @@
     </div> --}}
     @else
     <div class="container">
+
         <div class="card">
             <div class="card-header">Transactions</div>
             <div class="card-body">

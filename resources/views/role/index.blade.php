@@ -29,13 +29,7 @@
 <body>
     @include('welcome')
     <div class="container">
-        @if(session('success'))
-        <div class="alert alert-success mb-2">{{ session('success') }}</div>
-        @endif
-        @if(session('del'))
-        <div class="alert alert-danger mb-2">{{ session('del') }}</div>
-        @endif
-
+        
         <div class="card">
             <div class="card-header">Roles</div>
             <div class="card-body">

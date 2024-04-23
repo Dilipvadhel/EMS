@@ -17,7 +17,6 @@
             color: #1a36c4;
             font-weight: bold;
             background-color: rgb(76, 74, 74);
-            margin-right: 1px;
 
         }
 
@@ -26,14 +25,16 @@
             text-decoration: none;
             color: #fff;
             transition: color 0.5s ease;
-            padding: 8px 2px;
+            padding:    8px 2px;
             width: 100%;
+                     
         }
 
         .sidebar-link:hover {
             background-color: darkseagreen;
             color: #ccc;
             width: 100%;
+            
         }
 
         body {

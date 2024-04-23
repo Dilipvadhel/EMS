@@ -23,14 +23,7 @@
 
 
     <div class="container">
-        @if(session('success'))
-        <div class="alert alert-success mb-2">{{ session('success') }}</div>
-        @endif
-
-        @if(session('deleted'))
-        <div class="alert alert-danger mb-2">{{ session('deleted') }}</div>
-        @endif
-
+    
         <div class="card">
             <div class="card-header">Expense List</div>
             <div class="card-body">
