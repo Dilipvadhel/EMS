@@ -16,20 +16,19 @@
         margin-right: auto;
     }
 
-    @media (max-width: 576px) {
-        .table-responsive {
-            display: block;
-            width: 120%;
-            overflow-x: auto;
-
-        }
+    .sticky {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+        background: #FFF;
     }
 
 </style>
 <body>
     @include('welcome')
     <div class="container">
-        
+
         <div class="card">
             <div class="card-header">Roles</div>
             <div class="card-body">

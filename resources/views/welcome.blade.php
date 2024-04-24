@@ -8,6 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        
         a {
             color: #007bff;
             text-decoration: none;
@@ -18,6 +19,7 @@
             font-weight: bold;
             background-color: rgb(76, 74, 74);
 
+
         }
 
         .sidebar-link {
@@ -27,19 +29,19 @@
             transition: color 0.5s ease;
             padding:    8px 2px;
             width: 100%;
-                     
+
         }
 
         .sidebar-link:hover {
             background-color: darkseagreen;
             color: #ccc;
             width: 100%;
-            
+
         }
 
         body {
             overflow-x: hidden;
-        }       
+        }
         #page-content-wrapper {
             width: 100%;
             padding: 15px;
@@ -52,7 +54,7 @@
             #wrapper.toggled {
                 padding-left: 0;
             }
-            /* Sidebar Styles */
+
             #sidebar-wrapper {
                 position: fixed;
                 left: 0;
@@ -62,17 +64,18 @@
                 margin-top: -4.5%;
                 overflow-y: auto;
                 background: #393e46;
-                transition: all 0.5s ease;
+                transition: all 0.5s ease;             
+            
             }
             #page-content-wrapper {
                 padding: 20px;
                 position: relative;
-            }          
+            }
         }
         .footer {
             background-color: darkslategrey;
             color: white;
-            padding: px 0;
+            padding:0px;
             position: fixed;
             bottom: 0;
             width: 100%;
@@ -124,5 +127,5 @@
 </body>
 </html>
 
-
+      
 

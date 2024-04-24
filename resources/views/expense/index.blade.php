@@ -12,9 +12,9 @@
 </head>
 <style>
     .card {
-        width: 120%;
-        margin-left: auto;
-        margin-right: auto;
+        margin-left: 16%;
+        margin-right: 2%;
+        position: fixed;
     }
 
 </style>
@@ -22,9 +22,9 @@
     @include('welcome')
 
 
-    <div class="container">
-    
-        <div class="card">
+    {{-- <div class="container"> --}}
+
+        <div class="card col-md-auto">
             <div class="card-header">Expense List</div>
             <div class="card-body">
                 @if($expenses->isEmpty())
@@ -105,7 +105,7 @@
         </div>
     </div>
     </div>
-    </div>
+    {{-- </div> --}}
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>

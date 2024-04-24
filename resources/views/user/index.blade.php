@@ -8,23 +8,30 @@
     <title>Registered Users</title>
 </head>
 <style>
-    .card {
-        width: 120%;
-        margin-left: auto;
-        margin-right: auto;
-    }
+   
+.card {
+    max-width: 100%; 
+    overflow: auto; }
+
+.table {
+    width: 100%; 
+    overflow-x: auto;
+}
 
 </style>
 <body>
     @include('welcome')
+
     <div class="container">
         <div class="card">
             <div class="card-header">Registered Users</div>
             <div class="card-body">
+ 
                 <div class="row justify-content-between align-items-center mb-3">
                     <div class="col-md-auto">
-                        <a href="{{ route('user.create') }}" class="text-white btn btn-primary">User Registration</a>
+                        <a class="btn btn-primary" href="{{route('user.create')}}">User Registrations</a>
                     </div>
+
                     <div class="col-md-auto">
                         <form action="{{ route('user.index') }}" method="GET" class="form-inline">
                             <div class="input-group">
@@ -97,7 +104,6 @@
                                     <li class="page-item {{ ($users->currentPage() == $i) ? 'active' : '' }}"><a class="page-link" href="{{ $users->url($i) }}">{{ $i }}</a></li>
                                     @endfor
 
-                                    {{-- isme jaise hi inpect kholta ho left side se to right side pura card chala kata hai wo right side  fix hona sahiye provide code  --}}
                                     @if ($users->hasMorePages())
                                     <li class="page-item"><a class="page-link" href="{{ $users->nextPageUrl() }}" rel="next">&raquo;</a></li>
                                     @else

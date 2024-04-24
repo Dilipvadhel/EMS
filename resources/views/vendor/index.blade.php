@@ -21,6 +21,7 @@
 
 </style>
 <body>
+
     @include('welcome')
     <div class="container">
 
@@ -33,7 +34,6 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-
                     <div class="modal-body" id="vendorDetails">
                         <label for="vendor_id">Vendor Name:</label><br>
                         <select class="form-control mb-3 @error('vendor_id') is-invalid @enderror" id="vendor_id" name="vendor_id">
@@ -43,7 +43,6 @@
                             @endforeach
                         </select>
                         <div id="vendor_id-error" class="invalid-feedback">This is required</div>
-
                         <div class="form-group">
                             <label for="start_date">Start Date:</label>
                             <input type="date" class="form-control @error('start_date') is-invalid @enderror" id="start_date" name="start_date">
@@ -107,7 +106,7 @@
                             <td>{{ $vendor->address }}</td>
                             <td>{{ $vendor->email }}</td>
                             <td>
-                                <button class="btn btn-success openModal" data-vendor="{{ $vendor->id }}"  style="width:75%">{{ $vendor->balance }}</button>
+                                <button class="btn btn-success openModal" data-vendor="{{ $vendor->id }}" style="width:75%">{{ $vendor->balance }}</button>
                             </td>
                             <td>
                                 <a href="{{ route('vendor.edit', $vendor->id) }}" class="btn btn-info"><i class="bi bi-pencil-square"></i></a>
@@ -145,10 +144,10 @@
                             @else
                             <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
                             @endif
-                    </ul>
-                </nav>
-            </div>
-        </div>
+                        </ul>
+                   </nav>
+               </div>
+          </div>
 
         <div class="modal" id="transactionModal" tabindex="-1" aria-labelledby="transactionModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">

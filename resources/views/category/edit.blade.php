@@ -53,7 +53,7 @@
                                     </div>
                                 </div>
                             </div>
-              
+                            
                             <div class="form-group mt-3">
                                 <button type="button" class="btn btn-success" onclick="addSubcategory()">Add Subcategory</button>
                                 <button type="submit" class="btn btn-primary">Update Category</button>

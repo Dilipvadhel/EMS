@@ -31,7 +31,6 @@
                     <input type="file" class="form-control mt-2 @error('profile_picture') is-invalid @enderror" id="profile_picture" name="profile_picture">
                 </div>
 
-
                 <div class="col-6">
                     <div class="form-group">
                         <label for="role_id">Select Role</label>
@@ -58,7 +57,7 @@
                         @enderror
                     </div>
                 </div>
- 
+
                 <div class="col-6">
                     <div class="form-group">
                         <label for="lastname">Last Name</label>
@@ -70,7 +69,7 @@
                     </div>
                 </div>
             </div>
-
+            
 
             <div class="row">
                 <div class="col-6">
@@ -95,9 +94,9 @@
                     </div>
                 </div>
             </div>
-          <button type="submit" class="btn btn-primary" id="updateBtn">update</button>
-       <a href="{{route('user.index')}}" class="text-white btn btn-danger">Back</a>
-    </form>
-  </div>
+            <button type="submit" class="btn btn-primary" id="updateBtn">update</button>
+            <a href="{{route('user.index')}}" class="text-white btn btn-danger">Back</a>
+        </form>
+    </div>
 </body>
 </html>

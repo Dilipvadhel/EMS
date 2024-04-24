@@ -7,6 +7,12 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <style>
+
+.card {
+        margin-left: 17%;
+        margin-right: 3%;
+        position: fixed;
+    }
     .error{
         color: red;
     }
@@ -18,15 +24,16 @@
 <body>
 
     @include('welcome');
-    <div class="container mt-5 text-primary">
-        <h2 class="text-dark">Create Expense</h2>
-        <div class="card">
+    {{-- <div class="container mt-5 text-primary"> --}}
+        <div class="card col-md-auto">
             <div class="card-body">
                 @if(session('error'))
                 <div class="alert alert-danger">
                     {{ session('error') }}
                 </div>
                 @endif
+                <h2 class="text-dark">Create Expense</h2>
+
                 <form action="{{ route('expense.store') }}" method="POST" id="expenseForm" onsubmit="return validateExpenseForm()">
                     @csrf
                     <div class="row">
@@ -44,7 +51,7 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="amount">Amount</label>
-                                <input type="number" class="form-control @error('amount') is-invalid @enderror" id="amount" name="amount">
+                                <input type="number"  class="form-control @error('amount') is-invalid @enderror" id="amount" name="amount">
                                 <div id="amountError" class="error"></div>
                                 @error('amount')
                                 <div class="invalid-feedback"> {{ $message }} </div>
@@ -108,7 +115,7 @@
                 </form>
             </div>
         </div>
-    </div>
+    {{-- </div> --}}
 
     <script>
         const categoryInput = document.getElementById('category');
